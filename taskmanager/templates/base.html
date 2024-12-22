@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -21,13 +20,13 @@
         <!-- top navbar -->
         <nav class="light-blue darken-1">
             <div class="nav-wrapper">
-                <a href="{{ url_for('home') }}" class="brand-logo">Task Manager</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('add_task') }}">New Task</a></li>
-                    <li><a href="{{ url_for('categories') }}">Categories</a></li>
-                </ul>
+            <a href="{{ url_for('home') }}" class="brand-logo">Task Manager</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('add_task') }}">New Task</a></li>
+                <li><a href="{{ url_for('categories') }}">Categories</a></li>
+            </ul>
             </div>
         </nav>
 
@@ -57,5 +56,4 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
-
 </html>
