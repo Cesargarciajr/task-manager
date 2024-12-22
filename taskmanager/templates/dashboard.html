@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Dashboard
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <!-- Welcome Section -->
+    <div class="text-center mb-5">
+      <h2 class="display-4">Welcome, {{ username }}</h2>
+      <p class="lead text-muted">Let’s start making some plans!</p>
+    </div>
+
+    <!-- Action Buttons Section -->
+    <div class="d-grid gap-3 gap-md-4 d-md-flex justify-content-md-center mb-4">
+      <a class="btn btn-primary btn-lg px-4 rounded shadow-sm" href="{{ url_for('add_goal') }}"><i class="fa-solid fa-circle-plus"></i> Add Goal</a>
+      <a class="btn btn-success btn-lg px-4 rounded shadow-sm" href="{{ url_for('add_category') }}"><i class="fa-solid fa-circle-plus"></i> Add Category</a>
+    </div>
+    <br />
+
+    {% if categories %}
+      <!-- Nav Tabs -->
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item text-center" role="presentation">
+          <button class="nav-link active" id="year-tab" data-bs-toggle="tab" data-bs-target="#year" type="button" role="tab" aria-controls="year" aria-selected="true">Year</button>
+        </li>
+        <li class="nav-item text-center" role="presentation">
+          <button class="nav-link" id="semester-tab" data-bs-toggle="tab" data-bs-target="#semester" type="button" role="tab" aria-controls="semester" aria-selected="false">Semester</button>
+        </li>
+        <li class="nav-item text-center" role="presentation">
+          <button class="nav-link" id="trimester-tab" data-bs-toggle="tab" data-bs-target="#trimester" type="button" role="tab" aria-controls="trimester" aria-selected="false">Trimester</button>
+        </li>
+        <li class="nav-item text-center" role="presentation">
+          <button class="nav-link" id="month-tab" data-bs-toggle="tab" data-bs-target="#month" type="button" role="tab" aria-controls="month" aria-selected="false">Month</button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content custom-grey p-1 rounded shadow-sm border-0" id="myTabContent">
+        <div class="tab-pane fade show active custom-grey" id="year" role="tabpanel" aria-labelledby="year-tab">
+          {% set goal_timeframe_selection = 'year' %}
+          <div class="row m-2 g-3">
+            {% include 'partials/_categories.html' %}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="semester" role="tabpanel" aria-labelledby="semester-tab">
+          {% set goal_timeframe_selection = 'semester' %}
+          <div class="row m-2 g-3">
+            {% include 'partials/_categories.html' %}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="trimester" role="tabpanel" aria-labelledby="trimester-tab">
+          {% set goal_timeframe_selection = 'trimester' %}
+          <div class="row m-2 g-3">
+            {% include 'partials/_categories.html' %}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+          {% set goal_timeframe_selection = 'month' %}
+          <div class="row m-2 g-3">
+            {% include 'partials/_categories.html' %}
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <!-- Steps Section -->
+      <div class="container p-5 custom-grey rounded shadow-sm">
+        <div class="row">
+          <div class="col-12 text-center mb-4">
+            <h2 class="mb-3"><i class="fa-solid fa-list"></i> Steps to Get Started</h2>
+            <div class="card-body text-center">
+              <ul class="list-unstyled text-muted">
+                <li class="mb-2">1. Create a few categories (e.g., Finance).</li>
+                <li>2. Add goals linked to a category and timeslot (e.g., Save $300).</li>
+              </ul>
+              <div class="justify-content-md-center">
+                <a class="btn btn-success btn-lg" href="{{ url_for('add_category') }}"><i class="fa-solid fa-play"></i> Start Plan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
