@@ -19,8 +19,10 @@ else:
         uri += "?sslmode=require"
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
-
-
 db = SQLAlchemy(app)
 
 from taskmanager import routes  # noqa
+
+# TEMPORARILY create tables in Neon (remove after first deployment)
+with app.app_context():
+    db.create_all()
