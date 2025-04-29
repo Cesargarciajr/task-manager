@@ -23,6 +23,9 @@ db = SQLAlchemy(app)
 
 from taskmanager import routes  # noqa
 
-# TEMPORARILY create tables in Neon (remove after first deployment)
+# ✅ Import models before db.create_all()
+from taskmanager import routes, models  # make sure models are imported
+
+# ✅ Now that models are loaded, create tables
 with app.app_context():
     db.create_all()
